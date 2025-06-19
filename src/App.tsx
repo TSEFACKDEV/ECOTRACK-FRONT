@@ -10,6 +10,7 @@ import Register from "./pages/Main/Register";
 import Blog from "./pages/Main/Blog";
 import Signalement from "./pages/Main/Signalement";
 import Dons from "./pages/Main/Dons";
+import ResetPassWord from "./pages/Main/ResetPassWord";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/signalement" index element={<Signalement/>} />
           <Route path="/blog" index element={<Blog/>} />
           <Route path="/register" index element={<Register/>} />
+          <Route path="/reset-password" index element={<ResetPassWord/>} />
         </Route>
         
         <Route/>
