@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import {
   FiHome,
   FiBookOpen,
@@ -13,46 +13,31 @@ import {
   FiX,
   FiRefreshCw,
   FiList,
-} from "react-icons/fi";
-import { useAuth } from "../../hooks/useAuth";
+  FiUser,
+  FiLogOut,
+} from 'react-icons/fi';
+import { useAuth } from '../../hooks/useAuth';
 
 const navLinks = [
-  { to: "/", label: "Accueil", icon: <FiHome /> },
-  { to: "/signalement", label: "Signalements", icon: <FiAlertCircle /> },
-  { to: "/planing", label: "Planing", icon: <FiList /> },
-  { to: "/dons", label: "Dons", icon: <FiGift /> },
-  { to: "/blog", label: "Blog", icon: <FiBookOpen /> },
-  { to: "/about", label: "A Propos", icon: <FiInfo /> },
-  { to: "/faq", label: "FAQs", icon: <FiHelpCircle /> },
+  { to: '/', label: 'Accueil', icon: <FiHome /> },
+  { to: '/signalement', label: 'Signalements', icon: <FiAlertCircle /> },
+  { to: '/planing', label: 'Planing', icon: <FiList /> },
+  { to: '/dons', label: 'Dons', icon: <FiGift /> },
+  { to: '/blog', label: 'Blog', icon: <FiBookOpen /> },
+  { to: '/about', label: 'A Propos', icon: <FiInfo /> },
+  { to: '/faq', label: 'FAQs', icon: <FiHelpCircle /> },
 ];
 
 const Header = () => {
-  const [userName, setUserName] = useState<string | null>(null);
-
-  useEffect(() => {
-    const userStr = localStorage.getItem("user");
-    if (userStr) {
-      try {
-        const user = JSON.parse(userStr);
-        setUserName(user.firstName);
-      } catch {
-        setUserName(null);
-      }
-    }
-  }, []);
+  const { user, isAuthenticated, logout } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Supprime le token ou les infos utilisateur
-    localStorage.removeItem("token"); // adapte selon ton app
-    // Recharge l'application
-    window.location.reload();
+    logout();
+    navigate('/');
   };
 
-  const { isAuthenticated } = useAuth();
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Ferme le menu mobile au clic sur un lien
   const handleLinkClick = () => setMenuOpen(false);
 
   return (
@@ -75,7 +60,8 @@ const Header = () => {
         >
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </button>
-        {/*  menu en plain écrant */}
+
+        {/* Menu desktop */}
         <ul className="hidden md:flex items-center gap-7">
           {navLinks.map(({ to, label, icon }) => (
             <li key={to}>
@@ -89,36 +75,58 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        {/*  buttons en plains écrant */}
+
+        {/* Boutons d'authentification desktop */}
         <div className="hidden md:flex items-center gap-3">
           {isAuthenticated ? (
             <>
-              {userName && (
-                <span className="font-semibold text-green-700">
-                  Bonjour, {userName}
-                </span>
+              {user?.role === 'ADMIN' && (
+                <Link
+                  to="/dashboard"
+                  className="flex items-center gap-2 text-gray-700 hover:text-[#10B981] transition-colors font-medium"
+                >
+                  Dashboard
+                </Link>
               )}
-              <button className="btn1 " onClick={handleLogout}>
-                <FiLogIn /> Déconection
-              </button>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-700">
+                  <FiUser className="inline mr-1" />
+                  {user?.firstName}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="btn1 flex items-center gap-2"
+                >
+                  <FiLogOut />
+                  Déconnexion
+                </button>
+              </div>
             </>
           ) : (
             <>
-              <Link className="btn1 " to="/login">
-                <FiLogIn /> Connexion
+              <Link
+                to="/login"
+                className="btn1 flex items-center gap-2"
+              >
+                <FiLogIn />
+                Connexion
               </Link>
-              <Link className="btn2 " to="/register">
-                <FiUserPlus /> Inscription
+              <Link
+                to="/register"
+                className="btn2 flex items-center gap-2"
+              >
+                <FiUserPlus />
+                Inscription
               </Link>
             </>
           )}
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menu mobile */}
       <div
         className={`md:hidden transition-all duration-300 bg-white shadow-lg ${
-          menuOpen ? "max-h-[500px] py-4" : "max-h-0 overflow-hidden py-0"
+          menuOpen ? 'max-h-[500px] py-4' : 'max-h-0 overflow-hidden py-0'
         }`}
       >
         <ul className="flex flex-col gap-4 px-6">
@@ -136,12 +144,52 @@ const Header = () => {
           ))}
         </ul>
         <div className="flex flex-col gap-2 mt-4 px-6">
-          <Link className="btn1 " to="/login" onClick={handleLinkClick}>
-            <FiLogIn /> Connexion
-          </Link>
-          <Link className=" btn2 " to="/register" onClick={handleLinkClick}>
-            <FiUserPlus /> Inscription
-          </Link>
+          {isAuthenticated ? (
+            <>
+              {user?.role === 'ADMIN' && (
+                <Link
+                  to="/dashboard"
+                  className="text-gray-700 hover:text-[#10B981] text-lg py-2"
+                  onClick={handleLinkClick}
+                >
+                  Dashboard
+                </Link>
+              )}
+              <div className="flex items-center gap-2 py-2 text-gray-700">
+                <FiUser className="text-[#10B981]" />
+                {user?.firstName} {user?.lastName}
+              </div>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  handleLinkClick();
+                }}
+                className="btn1 flex items-center gap-2 justify-center"
+              >
+                <FiLogOut />
+                Déconnexion
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="btn1 flex items-center gap-2 justify-center"
+                onClick={handleLinkClick}
+              >
+                <FiLogIn />
+                Connexion
+              </Link>
+              <Link
+                to="/register"
+                className="btn2 flex items-center gap-2 justify-center"
+                onClick={handleLinkClick}
+              >
+                <FiUserPlus />
+                Inscription
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
