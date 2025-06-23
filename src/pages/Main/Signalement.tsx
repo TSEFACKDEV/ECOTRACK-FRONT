@@ -3,6 +3,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-hot-toast';
 import api from '../../utils/api';
+import Heading from '../../components/Heading';
 
 const Signalement = () => {
   const [description, setDescription] = useState('');
@@ -82,15 +83,11 @@ const Signalement = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-green-100 via-white to-green-50 pt-28 pb-10 px-2">
+       <Heading
+            title="Signaler un dépôt d'ordures"
+            subTitle="Aidez-nous à garder la ville propre en remplissant ce formulaire."
+          />
       <section className="max-w-2xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-0 overflow-hidden border border-green-100">
-        <div className="bg-gradient-to-r from-green-600 to-green-400 py-8 px-6 text-center">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight drop-shadow">
-            Signaler un dépôt d'ordures
-          </h1>
-          <p className="text-green-50/90 mb-2 text-base md:text-lg">
-            Aidez-nous à garder la ville propre en remplissant ce formulaire.
-          </p>
-        </div>
         <div className="p-8">
           {submitted ? (
             <div className="flex flex-col items-center justify-center py-16 animate-fade-in">

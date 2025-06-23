@@ -36,7 +36,7 @@ const Actualite = () => {
     <div className="flex flex-col items-center mx-auto min-h-[80vh] px-4 py-16 sm:px-8 md:px-16 bg-gradient-to-br from-white via-emerald-50 to-teal-50">
       <Heading
         title="Actualités Récentes"
-        subTitle="rester informer des derniere nouvelle concernent la gestion des dechets dans votre ville"
+        subTitle="rester informer des derniere conseils concernent la gestion des déchets "
       />
       <div className="grid gap-8 mt-8 md:grid-cols-3 w-full max-w-6xl">
         {articles.map((article) => (

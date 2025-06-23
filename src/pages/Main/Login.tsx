@@ -50,7 +50,7 @@ const Login = () => {
                       name="email"
                       type="email"
                       placeholder="Adresse email"
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2  rounded"
                     />
                   </div>
                   <ErrorMessage
@@ -67,7 +67,7 @@ const Login = () => {
                       name="password"
                       type="password"
                       placeholder="Mot de passe"
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 bg-transparent rounded"
                     />
                   </div>
                   <ErrorMessage
