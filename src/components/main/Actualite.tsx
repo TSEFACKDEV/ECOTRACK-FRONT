@@ -53,15 +53,15 @@ const Actualite = () => {
               <span className="text-xs text-gray-400 mb-2">{article.date}</span>
               <h3 className="text-lg font-semibold mb-2">{article.title}</h3>
               <p className="text-gray-600 flex-1">{article.content}</p>
-              <Link to={"/blog/"} className="mt-4 self-start px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition">
-                Lire plus
+              <Link to={`/conseils`} className="mt-4 self-start px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition">
+                En savoir Plus
               </Link>
             </div>
           </div>
         ))}
       </div>
-      <Link to={"/blog"} className="mt-10 px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition">
-        Voir tous les articles
+      <Link to={"/conseils"} className="mt-10 px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition">
+        Voir plus de Conseils
       </Link>
     </div>
   );
