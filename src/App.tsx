@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Main/Home";
-import About from "./pages/Main/Faqs";
+import About from "./pages/Main/About";
 import Login from "./pages/Main/Login";
 import Planing from "./pages/Main/Planing";
 import Register from "./pages/Main/Register";

@@ -21,11 +21,11 @@ const HeroSection = () => {
     },
     {
       id: 2,
-      title: "Soutenez notre action",
-      subtitle: "Faites un don pour l'assainissement",
-      description: "Votre contribution financière permet d'améliorer nos services de collecte et de traitement des déchets dans tout le Cameroun.",
+      title: "Conseils Ecologique",
+      subtitle: "Découvrer les méthodes et astuces de gestion des déchet ménager",
+      description: "Votre participation permet d'améliorer nos services de collecte et de traitement des déchets dans tout le Cameroun.",
       image: don,
-      ctaText: "Faire un don",
+      ctaText: "Découvrez les conseils",
       icon: <FiHeart className="inline mr-2" />,
       link: "/dons"
     },
@@ -35,7 +35,7 @@ const HeroSection = () => {
       subtitle: "Trouvez le centre le plus proche",
       description: "Localisez les centres de collecte et de tri des déchets dans votre ville et respectez les horaires de passage des camions.",
       image: colecte,
-      ctaText: "Voir la carte",
+      ctaText: "Consulter le planing",
       icon: <FiMapPin className="inline mr-2" />,
       link: "/planing"
     }
