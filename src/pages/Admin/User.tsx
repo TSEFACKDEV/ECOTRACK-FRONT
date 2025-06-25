@@ -40,7 +40,7 @@ const User = () => {
   const handleDelete = async (userId: string) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
       try {
-        await api.delete(`/user/${userId}`);
+        await api.delete(`/users/${userId}`);
         toast.success('Utilisateur supprimé avec succès');
         fetchUsers();
       } catch (error) {
@@ -62,7 +62,7 @@ const User = () => {
 
   const handleUpdate = async (userId: string) => {
     try {
-      await api.put(`/user/${userId}`, editForm);
+      await api.put(`/users/${userId}`, editForm);
       toast.success('Utilisateur mis à jour avec succès');
       setEditingUserId(null);
       fetchUsers();

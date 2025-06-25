@@ -1,18 +1,81 @@
-import React from 'react';
-import { FiUsers, FiAlertCircle, FiBarChart2 } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { FiUsers, FiAlertCircle, FiCalendar } from 'react-icons/fi';
+import { MdLightbulbOutline } from 'react-icons/md';
 import { Link } from 'react-router';
+import api from '../../utils/api';
 
 const Dashboard = () => {
+  const [userCount, setUserCount] = useState<number>(0);
+  const [reportCount, setReportCount] = useState<number>(0);
+  const [planingCount, setPlaningCount] = useState<number>(0);
+  const [tipCount, setTipCount] = useState<number>(0);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await api.get('/users');
+      console.log('API response:', response.data);
+      setUserCount(Array.isArray(response.data.data) ? response.data.data.length : 0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchReports = async () => {
+    try {
+      const response = await api.get('/report');
+      console.log('API response:', response.data);
+      // Utilise le count retourné par le backend
+      setReportCount(
+        typeof response.data.data?.count === 'number'
+          ? response.data.data.count
+          : Array.isArray(response.data.data?.reports)
+            ? response.data.data.reports.length
+            : 0
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchTips = async () => {
+    try {
+      const response = await api.get('/tip');
+      console.log('API response:', response.data);
+      setTipCount(Array.isArray(response.data.data) ? response.data.data.length : 0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchPlannings = async () => {
+    try {
+      const response = await api.get('/planning');
+      console.log('API response:', response.data);
+      setPlaningCount(Array.isArray(response.data.data) ? response.data.data.length : 0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+  useEffect(() => {
+    fetchUsers();
+    fetchReports();
+    fetchTips();
+    fetchPlannings()
+  }, []);
+
   const stats = [
-    { title: 'Utilisateurs', value: '1,234', icon: <FiUsers size={24} />, link: '/dashboard/user' },
-    { title: 'Signalements', value: '567', icon: <FiAlertCircle size={24} />, link: '/dashboard/reports' },
-    { title: 'Taux de résolution', value: '78%', icon: <FiBarChart2 size={24} />, link: '/dashboard/stats' },
+    { title: 'Utilisateurs', value: userCount.toLocaleString(), icon: <FiUsers size={24} />, link: '/dashboard/user' },
+    { title: 'Signalements', value:reportCount.toLocaleString(), icon: <FiAlertCircle size={24} />, link: '/dashboard/reports' },
+    { title: 'Plannings', value: planingCount.toLocaleString(), icon: <FiCalendar size={24} />, link: '/dashboard/planning' },
+    { title: 'Conseils', value: tipCount.toLocaleString(), icon: <MdLightbulbOutline size={24} />, link: '/dashboard/astuces' },
   ];
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Tableau de bord</h1>
-      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {stats.map((stat, index) => (
           <Link
@@ -31,13 +94,6 @@ const Dashboard = () => {
             </div>
           </Link>
         ))}
-      </div>
-
-      <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Activité récente</h2>
-        <div className="border-t border-gray-200 pt-4">
-          <p className="text-gray-500">Aucune activité récente</p>
-        </div>
       </div>
     </div>
   );

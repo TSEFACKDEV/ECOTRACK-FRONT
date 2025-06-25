@@ -9,7 +9,7 @@ const Heading: React.FC<HeadingProps> = ({ title, subTitle }) => {
   return (
     <div className="mb-10 flex flex-col items-center">
       <h1
-        className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-emerald-400 via-green-500 to-teal-400 bg-clip-text text-transparent drop-shadow-lg animate-fade-in"
+        className="text-center text-2xl md:text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-emerald-400 via-green-500 to-teal-400 bg-clip-text text-transparent drop-shadow-lg animate-fade-in"
         style={{ letterSpacing: "0.05em" }}
       >
         {title}

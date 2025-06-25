@@ -59,7 +59,7 @@ const Register = () => {
                       <Field
                         name="firstName"
                         placeholder="Prénom"
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2  rounded"
                       />
                     </div>
                     <ErrorMessage
@@ -74,7 +74,7 @@ const Register = () => {
                       <Field
                         name="lastName"
                         placeholder="Nom"
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2  rounded"
                       />
                     </div>
                     <ErrorMessage
@@ -92,7 +92,7 @@ const Register = () => {
                       name="email"
                       type="email"
                       placeholder="Adresse email"
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2  rounded"
                     />
                   </div>
                   <ErrorMessage
@@ -108,8 +108,8 @@ const Register = () => {
                     <Field
                       name="tel"
                       type="tel"
-                      placeholder="Téléphone (optionnel)"
-                      className="w-full p-2 border rounded"
+                      placeholder="Téléphone"
+                      className="w-full p-2  rounded"
                     />
                   </div>
                   <ErrorMessage
@@ -126,7 +126,7 @@ const Register = () => {
                       name="password"
                       type="password"
                       placeholder="Mot de passe"
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2  rounded"
                     />
                   </div>
                   <ErrorMessage
@@ -143,7 +143,7 @@ const Register = () => {
                       name="confirmPassword"
                       type="password"
                       placeholder="Confirmer le mot de passe"
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2  rounded"
                     />
                   </div>
                   <ErrorMessage

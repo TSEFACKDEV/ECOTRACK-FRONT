@@ -17,11 +17,11 @@ const missions: CartProps[] = [
   },
   {
     img: soutient,
-    title: "soutenez Hysacam",
+    title: "soyez Ecolo",
     description:
-      "Vos dons permettent de financer des équipement suplémentaire et d'améliorer les services de collecte des déchets dans votre quartier",
-    link: "/dons",
-    label: "faire un don",
+      "Vos initiatives permettent  d'améliorer les services de collecte des déchets dans votre quartier",
+    link: "/conseils",
+    label: "conseils",
   },
   {
     img: planing,

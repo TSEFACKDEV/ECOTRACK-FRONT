@@ -171,7 +171,7 @@ const Signalement = () => {
               
               <div>
                 <label className="block text-green-800 font-semibold mb-2" htmlFor="telephone">
-                  Téléphone <span className="text-green-500 text-xs">(optionnel)</span>
+                  Téléphone <span className="text-red-500 text-xs">*</span>
                 </label>
                 <input
                   id="telephone"

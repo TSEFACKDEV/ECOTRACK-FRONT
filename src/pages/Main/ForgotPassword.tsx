@@ -15,7 +15,7 @@ const ForgotPasswordSchema = Yup.object().shape({
 const ForgotPassword = () => {
   const handleSubmit = async (values: { email: string }) => {
     try {
-      const response = await api.post('/forgot-password', {
+      const response = await api.post('/auth/forgot-password', {
         email: values.email
       });
       
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                       name="email"
                       type="email"
                       placeholder="Adresse email"
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2  rounded"
                     />
                   </div>
                   <ErrorMessage

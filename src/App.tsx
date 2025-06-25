@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Main/Home";
-import About from "./pages/Main/About";
 import Login from "./pages/Main/Login";
 import Planing from "./pages/Main/Planing";
 import Register from "./pages/Main/Register";
@@ -19,6 +18,8 @@ import User from "./pages/Admin/User";
 import Reports from "./pages/Admin/Report";
 import Conseil from "./pages/Main/Conseil";
 import Tips from "./pages/Admin/Tips";
+import AdminPlanning from "./pages/Admin/AdminPlanning";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -27,7 +28,6 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="planing" element={<Planing />} />
           <Route path="faq" element={<Faqs />} />
@@ -45,8 +45,10 @@ function App() {
             <Route path="user" element={<User />} />
             <Route path="reports" element={<Reports />} />
             <Route path="astuces" element={<Tips/>} />
+            <Route path="planning" element={<AdminPlanning />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

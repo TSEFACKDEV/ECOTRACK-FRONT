@@ -23,7 +23,6 @@ const navLinks = [
   { to: '/signalement', label: 'Signalements', icon: <FiAlertCircle /> },
   { to: '/planing', label: 'Planing', icon: <FiList /> },
   { to: '/conseils', label: 'Conseils', icon: <FiBookOpen /> },
-  { to: '/about', label: 'A Propos', icon: <FiInfo /> },
   { to: '/faq', label: 'FAQs', icon: <FiHelpCircle /> },
 ];
 

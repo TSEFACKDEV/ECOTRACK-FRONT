@@ -7,6 +7,7 @@ import {
   FiBarChart2,
   FiAlertCircle,
   FiRefreshCw,
+  FiCalendar,
 } from "react-icons/fi";
 import { MdLightbulbOutline } from "react-icons/md";
 
@@ -29,20 +30,15 @@ const SideBar = () => {
       icon: <FiAlertCircle size={20} />,
       label: "Signalements",
     },
-     {
+    {
       path: "/dashboard/astuces",
       icon: <MdLightbulbOutline size={20} />,
       label: "Astuces/conseil",
     },
     {
-      path: "/dashboard/stats",
-      icon: <FiBarChart2 size={20} />,
-      label: "Statistiques",
-    },
-    {
-      path: "/dashboard/settings",
-      icon: <FiSettings size={20} />,
-      label: "Paramètres",
+      path: "/dashboard/planning",
+      icon: <FiCalendar size={20} />,
+      label: "Gestion Planning",
     },
   ];
 

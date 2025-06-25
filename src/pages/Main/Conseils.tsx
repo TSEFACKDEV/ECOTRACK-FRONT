@@ -3,8 +3,7 @@ import api from "../../utils/api";
 import { useNavigate } from "react-router";
 import Heading from "../../components/Heading";
 import {
-  FiChevronRight,
-  FiTag,
+  
   FiRefreshCw,
   FiTrash2,
   FiFeather, // Remplace FiLeaf par FiFeather ici
@@ -53,26 +52,40 @@ const filterOptions: { label: string; value: Filter; icon: JSX.Element }[] = [
 
 const ConseilCard = ({ tip, onClick }: { tip: Tip; onClick: () => void }) => (
   <div
-    className="bg-white rounded-lg shadow-md flex flex-col overflow-hidden cursor-pointer transition hover:shadow-lg"
+    className="bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden cursor-pointer transition hover:shadow-2xl border border-gray-100 group focus:ring-2 focus:ring-emerald-400"
     onClick={onClick}
     tabIndex={0}
     role="button"
     aria-label={`Lire le conseil ${tip.title}`}
     onKeyDown={e => { if (e.key === "Enter") onClick(); }}
   >
-    <img
-      src={`${API_URL}/${tip.image}`}
-      alt={tip.title}
-      className="h-40 w-full object-cover"
-    />
+    <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
+      <img
+        src={tip.image ? `${API_URL}/${tip.image}` : "/placeholder.jpg"}
+        alt={tip.title}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+        onError={e => { (e.target as HTMLImageElement).src = "/placeholder.jpg"; }}
+      />
+      <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold shadow ${categoryColors[tip.categorie]}`}>
+        {categoryLabels[tip.categorie]}
+      </div>
+      <div className="absolute right-3 bottom-3">{categoryIcons[tip.categorie]}</div>
+    </div>
     <div className="p-5 flex flex-col flex-1">
-      <span className="text-xs text-gray-400 mb-2">
+      <span className="text-xs text-gray-400 mb-1">
         {new Date(tip.createdAt).toLocaleDateString()}
       </span>
-      <h3 className="text-lg font-semibold mb-2">{tip.title}</h3>
-      <p className="text-gray-600 flex-1">{tip.description}</p>
+      <h3 className="text-lg font-bold mb-2 line-clamp-2">{tip.title}</h3>
+      <div className="relative flex-1 mb-2">
+        <p className="text-gray-600 text-sm line-clamp-3">
+          {tip.description}
+        </p>
+        {/* Dégradé pour overflow */}
+        <div className="absolute bottom-0 left-0 w-full h-6 pointer-events-none bg-gradient-to-t from-white to-transparent"></div>
+      </div>
       <button
-        className="mt-4 self-start px-4 py-2 bg-emerald-500 text-white rounded hover:bg-emerald-600 transition"
+        className="mt-auto px-4 py-2 bg-emerald-500 text-white rounded-lg font-semibold shadow hover:bg-emerald-600 transition"
         tabIndex={-1}
       >
         Lire plus
