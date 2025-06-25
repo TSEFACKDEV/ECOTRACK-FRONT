@@ -4,7 +4,7 @@ import type { AuthResponse, RegisterCredentials, LoginCredentials } from '../typ
 
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:5000/eco',
+  baseURL: 'http://aspect-server-dev.space:4003/eco',
   headers: {
     'Content-Type': 'application/json',
   },
