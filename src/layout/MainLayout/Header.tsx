@@ -4,8 +4,6 @@ import {
   FiHome,
   FiBookOpen,
   FiAlertCircle,
-  FiGift,
-  FiInfo,
   FiHelpCircle,
   FiLogIn,
   FiUserPlus,

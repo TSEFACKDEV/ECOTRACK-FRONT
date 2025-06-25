@@ -3,8 +3,6 @@ import { Link, useLocation } from "react-router";
 import {
   FiUsers,
   FiHome,
-  FiSettings,
-  FiBarChart2,
   FiAlertCircle,
   FiRefreshCw,
   FiCalendar,

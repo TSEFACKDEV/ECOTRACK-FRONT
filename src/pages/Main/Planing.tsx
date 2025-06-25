@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FiCalendar, FiMapPin, FiFilter, FiRefreshCw } from 'react-icons/fi';
+import {  FiMapPin, FiFilter, FiRefreshCw } from 'react-icons/fi';
 import api from '../../utils/api';
 import { toast } from 'react-hot-toast';
 import jsPDF from "jspdf";
