@@ -1,4 +1,4 @@
-import React from "react";
+
 import Heading from "../Heading";
 import { FaTrash, FaTruck, FaHandHoldingHeart } from "react-icons/fa6";
 import { RiUserCommunityFill } from "react-icons/ri";

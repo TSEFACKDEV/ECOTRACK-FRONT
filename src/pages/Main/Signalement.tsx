@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-hot-toast';
-import api from '../../utils/api';
 import Heading from '../../components/Heading';
 
 const Signalement = () => {
@@ -15,7 +14,7 @@ const Signalement = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,11 +50,7 @@ const Signalement = () => {
       formData.append('tel', telephone);
       formData.append('image', photo);
 
-      const response = await api.post('/report', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+
 
       toast.success('Signalement envoyé avec succès!');
       setSubmitted(true);

@@ -8,7 +8,7 @@ import {
   registerFailure,
   logout as logoutAction,
 } from '../store/slices/authSlice';
-import type { LoginCredentials, RegisterCredentials } from '../types/AuthTypes';
+import type { LoginCredentials, RegisterCredentials } from '../types/authTypes';
 import { login, register, logout } from '../utils/api';
 
 export const useAuth = () => {

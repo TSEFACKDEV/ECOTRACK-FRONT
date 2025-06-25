@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import api from "../../utils/api";
 import { useNavigate } from "react-router";
 import Heading from "../../components/Heading";
 import {
-  
   FiRefreshCw,
   FiTrash2,
-  FiFeather, // Remplace FiLeaf par FiFeather ici
+  FiFeather,
   FiGrid
 } from "react-icons/fi";
 import { API_URL } from "../../config";
 import { MdLightbulbOutline } from "react-icons/md";
+import type { ReactElement } from "react"; // Ajout de l'import
 
 type Category = "TRI" | "RECYCLAGE" | "COMPOSTAGE";
 type Filter = Category | "ALL";
@@ -37,17 +37,19 @@ export const categoryColors: Record<Category, string> = {
   COMPOSTAGE: "bg-yellow-100 text-yellow-700",
 };
 
-const categoryIcons: Record<Category, JSX.Element> = {
+// Remplace JSX.Element par ReactElement
+const categoryIcons: Record<Category, ReactElement> = {
   TRI: <FiTrash2 className="text-blue-400 text-5xl opacity-20 absolute right-4 bottom-4" />,
   RECYCLAGE: <FiRefreshCw className="text-green-400 text-5xl opacity-20 absolute right-4 bottom-4" />,
-  COMPOSTAGE: <FiFeather className="text-yellow-400 text-5xl opacity-20 absolute right-4 bottom-4" />, // Remplace FiLeaf par FiFeather
+  COMPOSTAGE: <FiFeather className="text-yellow-400 text-5xl opacity-20 absolute right-4 bottom-4" />,
 };
 
-const filterOptions: { label: string; value: Filter; icon: JSX.Element }[] = [
+// Remplace JSX.Element par ReactElement
+const filterOptions: { label: string; value: Filter; icon: ReactElement }[] = [
   { label: "Tous", value: "ALL", icon: <FiGrid /> },
   { label: "Tri", value: "TRI", icon: <FiTrash2 /> },
   { label: "Recyclage", value: "RECYCLAGE", icon: <FiRefreshCw /> },
-  { label: "Compostage", value: "COMPOSTAGE", icon: <FiFeather /> }, // Remplace FiLeaf par FiFeather
+  { label: "Compostage", value: "COMPOSTAGE", icon: <FiFeather /> },
 ];
 
 const ConseilCard = ({ tip, onClick }: { tip: Tip; onClick: () => void }) => (

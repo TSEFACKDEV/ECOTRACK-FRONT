@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FiKey, FiLock, FiMail, FiPhone, FiUser, FiUserPlus } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router'; // Correction ici
 import { Formik, Field, Form, ErrorMessage } from 'formik';

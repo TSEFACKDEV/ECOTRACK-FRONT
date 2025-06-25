@@ -1,4 +1,4 @@
-import React from "react";
+
 import Heading from "../Heading";
 import ecole from "../../images/Blog/ecole.jpeg"
 import electronique from "../../images/Blog/electronique.jpeg"

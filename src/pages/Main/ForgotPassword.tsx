@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FiMail, FiArrowLeft } from 'react-icons/fi';
 import { Link } from 'react-router';
 import { Formik, Field, Form, ErrorMessage } from 'formik';

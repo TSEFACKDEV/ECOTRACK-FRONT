@@ -1,6 +1,6 @@
-import React from "react";
 
-import { FiFacebook, FiInstagram, FiLinkedin, FiMail, FiMap, FiMapPin, FiPhone, FiRefreshCw, FiTwitter } from "react-icons/fi";
+
+import { FiFacebook, FiInstagram, FiLinkedin, FiMail, FiMapPin, FiPhone, FiRefreshCw, FiTwitter } from "react-icons/fi";
 
 import { Link } from "react-router";
 

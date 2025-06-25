@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { FiArrowLeft, FiTag } from "react-icons/fi";
 import { API_URL } from "../../config";

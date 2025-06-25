@@ -1,4 +1,4 @@
-import React from "react";
+
 import Heading from "../Heading";
 import type { CartProps } from "../Cart";
 import depot from "../../images/mission/signaler.jpeg";

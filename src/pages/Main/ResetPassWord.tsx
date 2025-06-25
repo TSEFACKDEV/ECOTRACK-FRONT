@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useSearchParams, useNavigate } from 'react-router';
 import { FiLock, FiKey, FiArrowLeft } from 'react-icons/fi';
 import { Link } from 'react-router';

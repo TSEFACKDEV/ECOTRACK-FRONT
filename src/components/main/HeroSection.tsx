@@ -4,7 +4,7 @@ import { FiChevronLeft, FiChevronRight, FiAlertTriangle, FiHeart, FiMapPin } fro
 import depot from '../../images/hero/depot.jpeg'
 import colecte from '../../images/hero/colecte.jpeg'
 import don from '../../images/hero/dons.jpeg'
-import { link } from 'framer-motion/client';
+
 import { Link } from 'react-router';
 const HeroSection = () => {
   // Données pour les slides spécifiques à la gestion des déchets

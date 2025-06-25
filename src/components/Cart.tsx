@@ -6,7 +6,7 @@ export interface CartProps {
   img: string
   title: string
   description: string
-  link?: string
+  link: string
   label?: string
 }
 
