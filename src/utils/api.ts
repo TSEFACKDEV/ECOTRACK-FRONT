@@ -3,12 +3,16 @@ import type { AuthResponse, RegisterCredentials, LoginCredentials } from '../typ
 
 
 
+// Configuration dynamique selon l'environnement
+const baseURL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_BASE_URL_PROD;
+
 const api = axios.create({
-  baseURL: 'http://aspect-server-dev.space:4003/eco',
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
 // Intercepteur pour ajouter le token aux requêtes
 api.interceptors.request.use(
   (config) => {
