@@ -4,7 +4,10 @@ import type { AuthResponse, RegisterCredentials, LoginCredentials } from '../typ
 
 
 // Configuration dynamique selon l'environnement
-const baseURL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_BASE_URL_PROD;
+const baseURL = import.meta.env.DEV 
+                 ? "http://127.0.0.1:5000/eco" 
+                 : "/api/eco"
+
 
 const api = axios.create({
   baseURL,

@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "http://aspect-server-dev.space:4003/:path*"
+      "source": "/api/eco/:path*",
+      "destination": "http://aspect-server-dev.space:4003/eco/:path*"
     }
   ]
 }
